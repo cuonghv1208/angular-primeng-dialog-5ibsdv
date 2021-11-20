@@ -1,0 +1,42 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+    <p-header>
+      header
+    </p-header>
+
+
+    <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="onAccept()"></button>
+    </p-footer>
+</p-confirmDialog>
+
+<p-dialog header="Godfather I" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px', height:'400px'}" [minY]="70" 
+        [maximizable]="true" [baseZIndex]="10000">
+<p-table [value]="data"
+    autoLayout="false"
+    scrollable="true"
+    scrollHeight="200px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th width="60px">Action</th>
+            <th width="400px">Path</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-action class="ui-table-scrollable-body">
+        <tr>
+            <td width="60px">{{action.name}}</td>
+            <td width="400px" style="overflow:hidden">{{action.done}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-check" (click)="onAccept()" label="Yes"></button>
+            <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+        </p-footer>
+</p-dialog>
+
+<button type="text" (click)="confirm()" pButton icon="pi pi-check" label="Confirm"></button>
